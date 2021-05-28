@@ -48,7 +48,7 @@ const Transaction = {
     let income = 0;
     // pegar todas as transações
     // para cada transação,
-    Transaction.all.forEach(transaction => {
+    Transaction.all.forEach((transaction) => {
       // se ela formaior que zero
       if (transaction.amount > 0) {
         // somar a uma variavel e retornar a variavel
@@ -62,7 +62,7 @@ const Transaction = {
     let expense = 0;
     // pegar todas as transações
     // para cada transação,
-    Transaction.all.forEach(transaction => {
+    Transaction.all.forEach((transaction) => {
       // se ela formaior que zero
       if (transaction.amount < 0 ) {
         // somar a uma variavel e retornar a variavel
@@ -124,9 +124,9 @@ const DOM = {
 
 const Utils = {
   formatAmount(value) {
-    value = Number(value.replace(/\,\./g, "")) * 100
+    value = value * 100
 
-    return value
+    return Math.round(value)
   },
 
   formatDate(date) {
@@ -163,7 +163,7 @@ const Form = {
     }
   },
 
-  validateField() {
+  validateFields() {
     const { description, amount, date } = Form.getValues()
     if (
       description.trim() === "" ||
@@ -195,11 +195,11 @@ const Form = {
   },
 
   submit(event) {
-    event.preventDefault();
+    event.preventDefault()
 
     try {
       // verificar se todos os campos foram preenchidos
-      Form.validateField()
+      Form.validateFields()
       // formatar os dados para salvar
       const transaction = Form.formatValues()
       // salvar
